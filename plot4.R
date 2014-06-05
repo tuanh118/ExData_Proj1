@@ -43,9 +43,31 @@ for (i in 1:7) {
 
 str(limited)
 
-# Plot 1
-hist(limited$Global_active_power, main="Global Active Power", xlab="Global Active Power (kilowatts)", ylab="Frequency", col="Red")
+# Plot 4
+
+## Change some settings
+par(mfrow = c(2, 2))
+par(mar = c(4, 4, 2, 1))
+
+## First
+plot(limited$DateTime, limited$Global_active_power, xlab="", ylab="Global Active Power", type="n")
+lines(limited$DateTime, limited$Global_active_power)
+
+## Second
+plot(limited$DateTime, limited$Voltage, xlab="datetime", ylab="Voltage", type="n")
+lines(limited$DateTime, limited$Voltage)
+
+## Thỉrd
+plot(limited$DateTime, limited$Sub_metering_1, xlab="", ylab="Energy sub metering", type="n")
+lines(limited$DateTime, limited$Sub_metering_1, col="Black")
+lines(limited$DateTime, limited$Sub_metering_2, col="Red")
+lines(limited$DateTime, limited$Sub_metering_3, col="Blue")
+legend("topright", lty=1, col=c("black", "red", "blue"), legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex=0.7, bty="n")
+
+## Fourth
+plot(limited$DateTime, limited$Global_reactive_power, xlab="datetime", ylab="Global_reactive_power", type="n")
+lines(limited$DateTime, limited$Global_reactive_power)
 
 # Copy to a PNG file
-dev.copy(png, file="plot1.png")
+dev.copy(png, file="plot4.png")
 dev.off()

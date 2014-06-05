@@ -43,9 +43,10 @@ for (i in 1:7) {
 
 str(limited)
 
-# Plot 1
-hist(limited$Global_active_power, main="Global Active Power", xlab="Global Active Power (kilowatts)", ylab="Frequency", col="Red")
+# Plot
+plot(limited$DateTime, limited$Global_active_power, xlab="", ylab="Global Active Power (kilowatts)", type="n")
+lines(limited$DateTime, limited$Global_active_power)
 
 # Copy to a PNG file
-dev.copy(png, file="plot1.png")
+dev.copy(png, file="plot2.png")
 dev.off()
